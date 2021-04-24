@@ -1,0 +1,81 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Chủ đề</h2>
+                    
+                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        <ng-container *ngFor="let getchude of chude">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a [routerLink] = "['/listchude',getchude.machude]" >{{getchude.tenchude}}</a></h4>
+                            </div>
+                        </div>
+                        </ng-container>
+                    </div><!--/category-products-->
+                    
+                    <div class="brands_products"><!--brands_products-->
+                        <h2>Nhà xuất bản</h2>
+                        <div class="brands-name">
+                            <ng-container *ngFor="let getnxb of nhaxuatban">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a [routerLink] = "['/listnxb',getnxb.manxb]" >{{getnxb.tennxb}}</a></li>
+                            </ul>
+                            </ng-container>
+                        </div>
+                    </div><!--/brands_products-->
+                    
+                    <div class="price-range"><!--price-range-->
+                        <h2>Price Range</h2>
+                        <div class="well text-center">
+                             <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+                             <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+                        </div>
+                    </div><!--/price-range-->
+                    
+                    <div class="shipping text-center"><!--shipping-->
+                        <img src="assets/images/home/shipping.jpg" alt="" />
+                    </div><!--/shipping-->
+                
+                </div>
+            </div>
+            
+            <div class="col-sm-9 padding-right">
+
+                
+                <div class="features_items"><!--features_items-->
+                    <h2 class="title text-center">Features Items</h2>
+                   
+                    <ng-container *ngFor="let item of spchude">
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                    <div class="productinfo text-center">       
+                                        <img src="assets/images/{{item.anhbia}}"alt=""
+                                         [routerLink]="['/detailproduct',item.masach]" style="width: 150px;height: 220px;" />
+                                        <h2>{{item.giaban}}VNĐ</h2>
+                                        <h4 class="product_name" style="height: 35px;">
+                                            <a [routerLink]="['/detailproduct',item.masach]">
+                                            <p>{{item.tensach}}</p>
+                                            </a>
+                                        </h4>
+                                        <a (click)="addToCart(item)"class="btn btn-default add-to-cart">
+                                        <i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </ng-container>
+               
+                </div><!--features_items-->
+             
+                    <ngb-pagination [collectionSize]="totalSachs" [pageSize]="pageSize" [(page)]="page" [maxSize]="10" [rotate]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

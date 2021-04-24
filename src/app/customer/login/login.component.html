@@ -1,0 +1,54 @@
+<section id="form"><!--form-->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-1">
+        <div class="login-form"><!--login form-->
+          <h2>Login to your account</h2>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin(loginForm.value)">
+            <!-- <form action="" method="POST"> -->
+            <input formControlName="customer_email" type="email" placeholder="Email" />
+            <span class="col alert alert-danger" role="alert"
+                                *ngIf="(loginForm.controls.customer_email?.errors?.required
+                                && loginForm.controls.customer_email?.touched) && loginForm.controls.customer_email?.touched" >
+                                        Email không được để rỗng!
+                                </span>
+            <input formControlName="customer_password" placeholder="Mật khẩu" />
+            <span class="col alert alert-danger" role="alert"
+                                *ngIf="(!loginForm.controls.customer_password?.errors?.required
+                                && loginForm.controls.customer_password?.touched && loginForm.controls.customer_password?.errors?.minlength) && loginForm.controls.customer_password?.touched">
+                                        Mật khẩu không được để rỗng và độ dài mật khẩu phải lớn hơn 6 ký tự!
+                                </span> 
+            <span>
+              <input type="checkbox" class="checkbox"> 
+              Nhớ đăng nhập
+            </span>
+            <button  type="submit" class="btn btn-default">Login</button>
+          </form>
+        </div><!--/login form-->
+      </div>
+      <div class="col-sm-1">
+        <h2 class="or">OR</h2>
+      </div>
+      <div class="col-sm-4">
+        <div class="signup-form"><!--sign up form-->
+          <h2>Tạo tài khoản</h2>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegister(registerForm.value)">
+            <input type="email" placeholder="Email" formControlName="customer_email">
+            <span class="col alert alert-danger" role="alert"
+                                *ngIf="(registerForm.controls.customer_email?.errors?.required
+                                || registerForm.controls.customer_email?.errors?.customer_email) && registerForm.controls.customer_email?.touched " >
+                                        Email là rỗng hoặc không đúng định dạng!
+                                </span>
+            <input type="password" placeholder="***" formControlName="customer_password">
+            <span class="col alert alert-danger" role="alert"
+                                *ngIf="(registerForm.controls.customer_password?.errors?.required
+                                || registerForm.controls.customer_password?.errors?.customer_password) && registerForm.controls.customer_password?.touched" >
+                                        Mật khẩu không được rỗng!
+                                </span>
+            <button type="submit" class="btn btn-default">Đăng kí</button>
+          </form>
+        </div><!--/sign up form-->
+      </div>
+    </div>
+  </div>
+</section><!--/form-->

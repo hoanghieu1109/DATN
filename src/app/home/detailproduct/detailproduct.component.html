@@ -1,0 +1,142 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Category</h2>
+                    
+                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <ng-container *ngFor="let getchude of chude">
+                                  <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                      <h4 class="panel-title"><a [routerLink] = "['/listchude',getchude.machude]" >{{getchude.tenchude}}</a></h4>
+                                    </div>
+                                  </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    
+                    </div><!--/category-products-->
+                    <div class="brands_products"><!--brands_products-->
+                        <h2>Brands</h2>
+                        <div class="brands-name">
+                            <ng-container *ngFor="let getnhaxuatban of nhaxuatban">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a  [routerLink] = "['/listnxb',getnhaxuatban.manxb]">{{getnhaxuatban.tennxb}}</a></li>
+                            </ul>
+                            </ng-container>
+                        </div>
+                    </div><!--/brands_products-->
+                    <!--price-range-->
+                    <!-- <div class="price-range">
+                        <h2>Price Range</h2>
+                        <div class="well">
+                             <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+                             <b>$ 0</b> <b class="pull-right">$ 600</b>
+                        </div>
+                    </div> -->
+                    <!--/price-range-->
+                    
+                    <div class="shipping text-center"><!--shipping-->
+                        <img src="images/home/shipping.jpg" alt="" />
+                    </div><!--/shipping-->
+                    
+                </div>
+            </div>
+            
+            <div class="col-sm-9 padding-right">
+                <div class="product-details"><!--product-details-->
+                    <div class="col-sm-4">
+                        <div class="view-product">
+                            <img src="assets/images/{{sach.anhbia}}" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="product-information"><!--/product-information-->
+                            <img src="" class="newarrival" alt="" />
+                            <h2>{{sach.tensach}}</h2>
+                            <p>Mã sản phẩm: {{sach.masach}}</p>
+                            
+                            <span>
+                                <span>Giá: {{sach.giaban}} VNĐ</span>
+                                <!-- <label>Quantity:</label>
+                                <input type="text" value="1" /> -->
+                                <button type="button" class="btn btn-fefault cart">
+                                    <a (click)="addToCart(sach)"><i class="fa fa-shopping-cart"></i>
+                                    Add to cart</a>
+                                </button>
+                            </span>
+                            <p><b>Chủ đề: {{sach.cd.tenchude}}</b></p>
+                            
+                            <p><b>Nhà xuất bản: {{sach.nxb.tennxb}}</b></p>
+                            
+                            
+                        </div><!--/product-information-->
+                    </div>
+                </div><!--/product-details-->
+                
+                <div class="category-tab shop-details-tab"><!--category-tab-->
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs">
+                            
+                            <li class="active"><a href="#reviews" data-toggle="tab">Mô tả</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="reviews" >
+                            <div class="col-sm-12">
+                                
+                                <p>{{sach.mota}}</p>
+                                <!-- <p><b>Write Your Review</b></p>
+                                
+                                <form action="#">
+                                    <span>
+                                        <input type="text" placeholder="Your Name"/>
+                                        <input type="email" placeholder="Email Address"/>
+                                    </span>
+                                    <textarea name="" ></textarea>
+                                    <b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
+                                    <button type="button" class="btn btn-default pull-right">
+                                        Submit
+                                    </button>
+                                </form> -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div><!--/category-tab-->
+                
+                <div class="recommended_items"><!--recommended_items-->
+                    <h2 class="title text-center">Sản phẩm tương tự</h2>
+                    
+                    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <ng-container *ngFor="let item of tuongtu ">
+                                <div class="col-sm-4">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <a [routerLink]="['/detailproduct',item.masach]"><img src="assets/images/{{item.anhbia}}"
+                                                alt="" style="height: 220px;width: 150px;" /></a>
+                                                <h2>{{item.giaban | currency:"VND"}}</h2>
+                                                <a [routerLink]="['/detailproduct',item.masach]"><p>{{item.tensach}}</p></a> 
+                                                <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>	  
+                            </div>
+                           
+                        </div>
+                         		
+                    </div>
+                </div><!--/recommended_items-->
+                
+            </div>
+        </div>
+    </div>
+</section>
