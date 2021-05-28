@@ -1,0 +1,99 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Chủ đề</h2>
+                    
+                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="javascript:void(0)" (click)="filterByChuDe(0)">Tất cả</a></h4>
+                            </div>
+                        </div>
+                        <ng-container *ngFor="let getchude of chude">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a href="javascript:void(0)" (click)="filterByChuDe(getchude.machude)">{{getchude.tenchude}}</a></h4>
+                            </div>
+                        </div>
+                        </ng-container>
+                    </div><!--/category-products-->
+                    
+                    <div class="brands_products"><!--brands_products-->
+                        <h2>Nhà xuất bản</h2>
+                        <div class="brands-name">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="javascript:void(0)" (click)="filterByNXB(0)" >Tất cả</a></li>
+                            </ul>
+                            <ng-container *ngFor="let getnxb of nhaxuatban">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="javascript:void(0)" (click)="filterByNXB(getnxb.manxb)" >{{getnxb.tennxb}}</a></li>
+                            </ul>
+                            </ng-container>
+                        </div>
+                    </div><!--/brands_products-->
+                    
+                    <div class="price-range"><!--price-range-->
+                        <h2>Giá</h2>
+                       <form [formGroup]="formGia">
+                        <div class="form-group row">
+                            <div class="col-sm-5">
+                               <input type="text" placeholder="Min" formControlName="giaMin" (change)="filterByPrice()" class="form-control">
+                            </div>
+                            <div class="col-sm-2">
+                               and 
+                           </div>
+                           <div class="col-sm-5">
+                               <input type="text" placeholder="Max" formControlName="giaMax" (change)="filterByPrice()"  class="form-control">
+                                
+                           </div>
+                       </div>
+                       </form>
+                    </div><!--/price-range-->
+                    
+                    <div class="shipping text-center"><!--shipping-->
+                        <img src="assets/images/home/shipping.jpg" alt="" />
+                    </div><!--/shipping-->
+                
+                </div>
+            </div>
+            
+            <div class="col-sm-9 padding-right">
+
+                
+                <div class="features_items"><!--features_items-->
+                    <h2 class="title text-center">Kết quả tìm kiếm</h2>
+                   
+                    <ng-container *ngFor="let item of searchResult.data">
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                    <div class="productinfo text-center">       
+                                        <img src="assets/images/{{item.anhbia}}"alt=""
+                                         [routerLink]="['/detailproduct',item.masach]" style="width: 150px;height: 220px;" />
+                                        <h2>{{item.giaban| currency:'VND'}}</h2>
+                                        <h4 class="product_name" style="height: 35px;">
+                                            <a [routerLink]="['/detailproduct',item.masach]">
+                                            <p>{{item.tensach}}</p>
+                                            </a>
+                                        </h4>
+                                        <a (click)="addToCart(item)"class="btn btn-default add-to-cart">
+                                        <i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </ng-container>
+               <h4 *ngIf="!searchResult.data">Không có kết quả</h4>
+                </div><!--features_items-->
+             
+                    <ngb-pagination [collectionSize]="searchResult.total" [pageSize]="searchResult.size" [(page)]="searchResult.page" [maxSize]="10" [rotate]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

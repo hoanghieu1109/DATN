@@ -1,3 +1,4 @@
+import {  ReactiveFormsModule } from '@angular/forms';
 import { GioithieuComponent } from './../header/gioithieu/gioithieu.component';
 import { TintucComponent } from './../header/tintuc/tintuc.component';
 import { LoginComponent } from './../customer/login/login.component';
@@ -12,6 +13,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { from } from 'rxjs';
 import { CartComponent } from '../customer/cart/cart.component';
 import { ListnxbComponent } from './listnxb/listnxb.component';
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
@@ -42,13 +44,16 @@ const routes: Routes = [
   {
     path: 'gioithieu', component: GioithieuComponent,
   },
+  {
+    path:'search/result',component:SearchComponent
+  }
   
 ]
 
 @NgModule({
-  declarations: [HomeComponent,ListchudeComponent,DetailproductComponent, ListnxbComponent],
+  declarations: [HomeComponent,ListchudeComponent,DetailproductComponent, ListnxbComponent, SearchComponent],
   imports: [
-    CommonModule,NgbModule,
+    CommonModule,NgbModule,ReactiveFormsModule,
     RouterModule,
     RouterModule.forChild(routes),
 
