@@ -1,4 +1,4 @@
-import {  ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { GioithieuComponent } from './../header/gioithieu/gioithieu.component';
 import { TintucComponent } from './../header/tintuc/tintuc.component';
 import { LoginComponent } from './../customer/login/login.component';
